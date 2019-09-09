@@ -2,7 +2,7 @@
 #-*-coding:UTF-8-*-
 
 from settings import path_hosts, blacklist_directories
-
+from datetime import datetime
 from os import path
 import shutil
 import requests
@@ -32,6 +32,7 @@ if path.exists(hosts_path):
         hosts_data += '\n' + len(reference) * '#' + '\n'
         hosts_data += reference
         hosts_data += '\n' + len(reference) * '#' + '\n'
+        hosts_data += '\nLast update: {}\n\n'.format(datetime.today())
         for item in blacklist_directories:
             r = requests.get(item)
             r = r.text
