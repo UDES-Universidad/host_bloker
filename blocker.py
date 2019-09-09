@@ -14,11 +14,19 @@ hosts_data = ''
 if path.exists(hosts_path):
     with open(hosts_path, 'r') as fhosts:
         lines = fhosts.readlines()
-        if not reference in lines:
-            shutil.copy(hosts_path, path.join(path_hosts, 'hosts.back'))
+        exist_reference = False
+        if reference+'\n' in lines:
+            exist_reference = True
 
-    with open(hosts_path, 'r') as rhosts:
-        hosts_data = rhosts.read()
+        if not exist_reference:
+            shutil.copy(hosts_path, path.join(path_hosts, 'hosts.back'))
+            with open(hosts_path, 'r') as rhosts:
+                hosts_data = rhosts.read()
+        else:
+            with open(path.join(path_hosts, 'hosts.back'), 'r') as rhosts:
+                hosts_data = rhosts.read()
+
+
 
     with open(hosts_path, 'w') as whosts:
         hosts_data += '\n' + len(reference) * '#' + '\n'
