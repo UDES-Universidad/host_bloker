@@ -1,0 +1,2 @@
+# Para las peticiones al servidor
+requests
