@@ -7,19 +7,25 @@ from os import path
 import shutil
 import requests
 
-hosts = path.join(path_hosts, 'host')
+hosts_path = path.join(path_hosts, 'hosts')
+reference = '##BlockerUDES##'
 
-if path.exists(hosts):
-    with open(hosts) as fhosts:
-        print(fhosts.read())
-else:
-    print('Not exists')
+hosts_data = ''
+if path.exists(hosts_path):
+    with open(hosts_path, 'r') as fhosts:
+        lines = fhosts.readlines()
+        if not reference in lines:
+            shutil.copy(hosts_path, path.join(path_hosts, 'hosts.back'))
 
-txt = ''
-for item in blacklist_directories:
-    r = requests.get(item)
-    r = r.text
-    txt += r + '\n'
+    with open(hosts_path, 'r') as rhosts:
+        hosts_data = rhosts.read()
 
-with open(hosts, 'w') as file_example:
-    file_example.write(txt)
+    with open(hosts_path, 'w') as whosts:
+        hosts_data += '\n' + len(reference) * '#' + '\n'
+        hosts_data += reference
+        hosts_data += '\n' + len(reference) * '#' + '\n'
+        for item in blacklist_directories:
+            r = requests.get(item)
+            r = r.text
+            hosts_data += r + '\n'
+            whosts.write(hosts_data)
