@@ -1,0 +1,6 @@
+#Files
+block_linux.py
+hosts
+
+#Dirs
+__pycache__
