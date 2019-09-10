@@ -1,5 +1,5 @@
-#!/home/sit/miniconda3/bin/python3
-#-*-coding:UTF-8-*-
+#!/home/quattro/miniconda3/envs/host_bloker/bin/python
+# -*-coding:UTF-8-*-
 
 from settings import path_hosts, blacklist_directories
 from datetime import datetime
@@ -13,20 +13,14 @@ reference = '##BlockerUDES##'
 hosts_data = ''
 if path.exists(hosts_path):
     with open(hosts_path, 'r') as fhosts:
-        lines = fhosts.readlines()
-        exist_reference = False
-        if reference+'\n' in lines:
-            exist_reference = True
-
-        if not exist_reference:
+        txt_raw = fhosts.read()
+        if reference not in txt_raw:
             shutil.copy(hosts_path, path.join(path_hosts, 'hosts.back'))
             with open(hosts_path, 'r') as rhosts:
                 hosts_data = rhosts.read()
         else:
             with open(path.join(path_hosts, 'hosts.back'), 'r') as rhosts:
                 hosts_data = rhosts.read()
-
-
 
     with open(hosts_path, 'w') as whosts:
         hosts_data += '\n' + len(reference) * '#' + '\n'
