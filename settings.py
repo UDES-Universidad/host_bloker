@@ -26,3 +26,8 @@ blacklist_directories = [
 hosts_extras = [
     ''
 ]
+
+# Errors path file
+logs_file = '/home/sit/Documentos/python/host_bloker/logs.txt'
+
+reference = '##BlockerUDES##'

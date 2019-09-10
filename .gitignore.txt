@@ -1,6 +1,7 @@
 #Files
 block_linux.py
 hosts
+errors.txt
 
 #Dirs
 __pycache__
