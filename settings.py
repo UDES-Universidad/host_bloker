@@ -7,8 +7,8 @@ if 'linux' in platform:
     path_hosts = '/etc'
     logs_file = '/home/sit/Documentos/python/host_bloker/logs.txt'
 elif 'win' in platform:
-    path_hosts = 'C:\Windows\System32\drivers\etc'
-    logs_file = 'C:\Users\Administrador\Documents\logs.txt'
+    path_hosts = 'C:\\Windows\\System32\\drivers\\etc'
+    logs_file = 'C:\\Users\\Administrador\\Documents\\logs.txt'
 
 blacklist_directories = [
 # Adware + Malware
