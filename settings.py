@@ -1,10 +1,14 @@
 from sys import platform
 
 path_hosts = None
+# Errors path file
+logs_file = ''
 if 'linux' in platform:
     path_hosts = '/etc'
+    logs_file = '/home/sit/Documentos/python/host_bloker/logs.txt'
 elif 'win' in platform:
     path_hosts = 'C:\Windows\System32\drivers\etc'
+    logs_file = 'C:\Users\Administrador\Documents\logs.txt'
 
 blacklist_directories = [
 # Adware + Malware
@@ -26,8 +30,5 @@ blacklist_directories = [
 hosts_extras = [
     ''
 ]
-
-# Errors path file
-logs_file = '/home/sit/Documentos/python/host_bloker/logs.txt'
 
 reference = '##BlockerUDES##'
