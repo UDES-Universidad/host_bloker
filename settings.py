@@ -5,7 +5,7 @@ path_hosts = None
 logs_file = ''
 if 'linux' in platform:
     path_hosts = '/etc'
-    logs_file = '/home/sit/Documentos/python/host_bloker/logs.txt'
+    logs_file = '/home/sit/Documentos/python/logs.txt'
 elif 'win' in platform:
     path_hosts = 'C:\\Windows\\System32\\drivers\\etc'
     logs_file = 'C:\\Users\\Administrador\\Documents\\logs.txt'
